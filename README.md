@@ -28,18 +28,18 @@
 
 ## Research structure
 
-###0. Summary / Abstract
+### 0. Summary / Abstract
 * Foreword / Personal motivation
 * Table of Contents
 
-###1. Introduction 
+### 1. Introduction 
 `brief overview explaining the background and importance of the study`
 
 * Current State Cloud Computing
 * Current Situation at SAP CIS
 * What are FaaS, Serverless Arch. (general) -> Area of Research
 
-###2. Statement of Problem  
+### 2. Statement of Problem  
 `specifically what the researcher wants to know`
 
 * How to react to infrastructure events
@@ -55,7 +55,7 @@
 * Cost perspective 
  * hidden costs, predictability, comparison with/without FaaS
 
-###3. Purpose of the Study 
+### 3. Purpose of the Study 
 `explanation of the problem and what the researcher hopes to achieve by conducting the study`
 
 * Providing a scalable method to allow consumer to react to infrastructure events 
@@ -67,35 +67,32 @@
  * (Maturity, Performance, Costs of operations u.a.)
 * General view on Serverless Architecture
 
-###4. Theoretical framework, research questions, or objectives 
+### 4. Theoretical framework, research questions, or objectives 
 `used to guide the direction of the research`
 
 * Introduce Use Cases (Overview)
 * Introduce Frameworks (Overview)
 * Research Question like "How do xyz improves current situation"
 
-###5. Definition of Terms 
+### 5. Definition of Terms 
 `clarification of any terminology in the study that may not be commonly known`
 
 * Serverless, Microservices, Docker, Kubernetes
 
-###6. Review of the Literature 
+### 6. Review of the Literature 
 `sufficient review of the relevant research` 
 
-###7. Research Design / Method 
+### 7. Research Design / Method 
 `describes the methods that will be used to collect data or organize creative products.` 
 
 * Describe Design
 * Frameworks Criteria, Dimensions, key values
 * How could they fit into use cases
 
-###8. Variables 
+### 8. Variables 
 `describe aspects of the cases on which data collection and analysis will focus`
 
-###9. Evaluation / Results
+### 9. Evaluation / Results
  
 
-###10. Conclusion
-
-
-
+### 10. Conclusion
