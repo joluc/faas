@@ -12,7 +12,7 @@
 * Third party independent
 * Open Source
 * Dimension: Technical fit, Use cases fit, SAP fit 
- * (Maturity, Performance, Costs of operations u.a.)
+  * (Maturity, Performance, Costs of operations u.a.)
 
 ##### Framework Selection
 
@@ -43,28 +43,28 @@
 `specifically what the researcher wants to know`
 
 * How to react to infrastructure events
- * File processing, new object store created, incoming requests
+  * File processing, new object store created, incoming requests
 * Scalability of multi-tenant processes
- * Scaling just pieces of business logic 
+  * Scaling just pieces of business logic 
 * Integrate FaaS in current DevOps framework
 * Framework for categorization of functions
- * Managing a large number of functions 
- * Overview issues (which functions does what)
- * Update and redundancy issues
+  * Managing a large number of functions 
+  * Overview issues (which functions does what)
+  * Update and redundancy issues
 * How to tackle increasing development and testing complexity
 * Cost perspective 
- * hidden costs, predictability, comparison with/without FaaS
+  * hidden costs, predictability, comparison with/without FaaS
 
 ### 3. Purpose of the Study 
 `explanation of the problem and what the researcher hopes to achieve by conducting the study`
 
 * Providing a scalable method to allow consumer to react to infrastructure events 
- * (data processing (logs, metric, audit), "new object store file created")
+  * data processing (logs, metric, audit), "new object store file created"
 * How could FaaS be used to enhance resource utilization 
 * Define and examination of different use cases  
 * Which frameworks are available on the market (Evaluation)
- * Dimensions: Technical fit, Use Cases fit, SAP fit 
- * (Maturity, Performance, Costs of operations u.a.)
+  * Dimensions: Technical fit, Use Cases fit, SAP fit 
+  * (Maturity, Performance, Costs of operations u.a.)
 * General view on Serverless Architecture
 
 ### 4. Theoretical framework, research questions, or objectives 
