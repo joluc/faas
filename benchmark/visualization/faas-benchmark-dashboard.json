@@ -1,0 +1,175 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "FaaS Platform Benchmark Dashboard",
+    "tags": ["faas", "benchmark", "serverless"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "CPU Utilization",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "avg(1 - (rate(node_cpu_seconds_total{mode=\"idle\"}[2m]))) * 100",
+            "legendFormat": "CPU Usage %"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 0, "y": 0}
+      },
+      {
+        "id": 2,
+        "title": "Memory Utilization",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "avg((1 - ((node_memory_MemFree_bytes + node_memory_Cached_bytes + node_memory_Buffers_bytes) / node_memory_MemTotal_bytes))) * 100",
+            "legendFormat": "Memory Usage %"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          }
+        },
+        "gridPos": {"h": 8, "w": 6, "x": 6, "y": 0}
+      },
+      {
+        "id": 3,
+        "title": "Function CPU Usage",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "sum(rate(container_cpu_system_seconds_total{namespace=\"fission\"}[1m]))",
+            "legendFormat": "Fission"
+          },
+          {
+            "expr": "sum(rate(container_cpu_system_seconds_total{namespace=\"kubeless\"}[1m]))",
+            "legendFormat": "Kubeless"
+          },
+          {
+            "expr": "sum(rate(container_cpu_system_seconds_total{namespace=\"openfaas-fn\"}[1m]))",
+            "legendFormat": "OpenFaaS"
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 0}
+      },
+      {
+        "id": 4,
+        "title": "Function Invocation Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "round(sum(irate(fission_function_calls_total{name=\"fn\"}[2m])))",
+            "legendFormat": "Fission"
+          },
+          {
+            "expr": "round(sum(irate(function_calls_total[2m])))",
+            "legendFormat": "Kubeless"
+          },
+          {
+            "expr": "round(irate(gateway_function_invocation_total[30s]))",
+            "legendFormat": "OpenFaaS"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Invocations/sec",
+            "min": 0
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 8}
+      },
+      {
+        "id": 5,
+        "title": "Function Execution Duration",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "fission_function_duration_seconds{name=\"fn\",quantile=\"0.5\",path=\"/fn\",cached=\"false\"}",
+            "legendFormat": "Fission (Cold)"
+          },
+          {
+            "expr": "fission_function_duration_seconds{name=\"fn\",quantile=\"0.5\",path=\"/fn\",cached=\"true\"}",
+            "legendFormat": "Fission (Warm)"
+          },
+          {
+            "expr": "sum(irate(function_duration_seconds_sum[1m])) by (function)",
+            "legendFormat": "Kubeless"
+          },
+          {
+            "expr": "rate(gateway_functions_seconds_sum[30s])/rate(gateway_functions_seconds_count[30s])",
+            "legendFormat": "OpenFaaS"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Duration (ms)",
+            "min": 0
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 8}
+      },
+      {
+        "id": 6,
+        "title": "Container Scaling",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "kube_deployment_status_replicas_available{deployment=\"fn\"}",
+            "legendFormat": "Fission Pods"
+          },
+          {
+            "expr": "kube_deployment_status_replicas_available{deployment=~\".*kubeless.*\"}",
+            "legendFormat": "Kubeless Pods"
+          },
+          {
+            "expr": "kube_deployment_status_replicas_available{deployment=~\".*openfaas.*\"}",
+            "legendFormat": "OpenFaaS Pods"
+          }
+        ],
+        "yAxes": [
+          {
+            "label": "Pod Count",
+            "min": 0
+          }
+        ],
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 16}
+      },
+      {
+        "id": 7,
+        "title": "Container Startup Latency",
+        "type": "singlestat",
+        "targets": [
+          {
+            "expr": "kubelet_docker_operations_latency_microseconds{operation_type=\"start_container\",quantile=\"0.5\"}",
+            "legendFormat": "Startup Latency"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "µs"
+          }
+        },
+        "gridPos": {"h": 8, "w": 12, "x": 12, "y": 16}
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "5s",
+    "schemaVersion": 27,
+    "version": 1,
+    "description": "Comprehensive monitoring dashboard for FaaS platform benchmarking including performance metrics, scaling behavior, and resource utilization."
+  }
+}
